@@ -10,7 +10,7 @@ namespace ToteSync.DAL.Persistence
 {
     public class GroupMemberRepository : BaseRepository<GroupMember>, IGroupMemberRepository
     {
-        public GroupMemberRepository(DbContext context) : base(context)
+        public GroupMemberRepository(ApplicationDBContext context) : base(context)
         {
         }
     }

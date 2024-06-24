@@ -10,7 +10,7 @@ namespace ToteSync.DAL.Persistence
 {
     public class ItemRepository : BaseRepository<Item>, IItemRepository
     {
-        public ItemRepository(DbContext context) : base(context)
+        public ItemRepository(ApplicationDBContext context) : base(context)
         {
         }
     }

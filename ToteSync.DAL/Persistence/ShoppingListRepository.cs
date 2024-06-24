@@ -10,7 +10,7 @@ namespace ToteSync.DAL.Persistence
 {
     public class ShoppingListRepository : BaseRepository<ShoppingList>, IShoppingListRepository
     {
-        public ShoppingListRepository(DbContext context) : base(context)
+        public ShoppingListRepository(ApplicationDBContext context) : base(context)
         {
         }
     }

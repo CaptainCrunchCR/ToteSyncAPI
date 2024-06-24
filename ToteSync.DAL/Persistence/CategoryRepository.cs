@@ -10,7 +10,7 @@ namespace ToteSync.DAL.Persistence
 {
     public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
-        public CategoryRepository(DbContext context) : base(context)
+        public CategoryRepository(ApplicationDBContext context) : base(context)
         {
         }
     }
