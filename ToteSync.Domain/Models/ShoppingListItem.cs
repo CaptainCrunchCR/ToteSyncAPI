@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ToteSync.Domain;
+namespace ToteSync.Domain.Models;
 
-public partial class ShoppingListItem
+public partial class ShoppingListItem : IBaseEntity
 {
     public int ShoppingListItemId { get; set; }
 
@@ -18,4 +18,6 @@ public partial class ShoppingListItem
     public virtual Item ShoppingListItemItem { get; set; } = null!;
 
     public virtual ShoppingList ShoppingListItemShoppingList { get; set; } = null!;
+
+    public int Id => ShoppingListItemId;
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ToteSync.Domain;
+namespace ToteSync.Domain.Models;
 
-public partial class Category
+public partial class Category : IBaseEntity
 {
     public int CategoryId { get; set; }
 
@@ -16,4 +16,6 @@ public partial class Category
     public virtual User CategoryUser { get; set; } = null!;
 
     public virtual ICollection<Item> Items { get; set; } = new List<Item>();
+
+    public int Id => CategoryId;
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ToteSync.Domain;
+namespace ToteSync.Domain.Models;
 
-public partial class GroupMember
+public partial class GroupMember : IBaseEntity
 {
     public int GroupMemberId { get; set; }
 
@@ -14,4 +14,6 @@ public partial class GroupMember
     public virtual Group GroupMemberGroup { get; set; } = null!;
 
     public virtual User GroupMemberUser { get; set; } = null!;
+
+    public int Id => GroupMemberId;
 }
