@@ -35,6 +35,9 @@ builder.Services.AddScoped<IShoppingListRepository, ShoppingListRepository>();
 builder.Services.AddScoped<IShoppingListItemRepository, ShoppingListItemRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+//Register Unit of Work as a scoped service.
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 // Add swagger to the container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
