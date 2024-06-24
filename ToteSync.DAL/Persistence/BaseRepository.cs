@@ -37,24 +37,28 @@ namespace ToteSync.DAL.Persistence
             return await _context.Set<TEntity>().CountAsync();
         }
 
-        public TEntity? Get(Expression<Func<TEntity, bool>> predicate)
+        public TEntity? Get(Expression<Func<TEntity, bool>> predicate, bool isTracked = false)
         {
-            return _context.Set<TEntity>().FirstOrDefault(predicate);
+            return (isTracked) ? _context.Set<TEntity>().AsTracking().FirstOrDefault() :
+                _context.Set<TEntity>().AsNoTracking().FirstOrDefault(predicate);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll(bool isTracked = false)
         {
-            return _context.Set<TEntity>().ToList();
+            return (isTracked) ? _context.Set<TEntity>().AsTracking().ToList() :
+                _context.Set<TEntity>().AsNoTracking().ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync(bool isTracked = false)
         {
-            return await _context.Set<TEntity>().ToListAsync();
+            return (isTracked) ? await _context.Set<TEntity>().AsTracking().ToListAsync() :
+                await _context.Set<TEntity>().AsNoTracking().ToListAsync();
         }
 
-        public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, bool isTracked = false)
         {
-            return await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+            return (isTracked) ? await _context.Set<TEntity>().AsTracking().FirstOrDefaultAsync(predicate) :
+              await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(predicate);
         }
 
         public TEntity? GetById(int id)
@@ -67,14 +71,16 @@ namespace ToteSync.DAL.Persistence
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate)
+        public IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate, bool isTracked = false)
         {
-            return _context.Set<TEntity>().Where(predicate).ToList();
+            return (isTracked) ? _context.Set<TEntity>().AsTracking().Where(predicate).ToList() :
+                _context.Set<TEntity>().AsNoTracking().Where(predicate).ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate, bool isTracked = false)
         {
-            return await _context.Set<TEntity>().Where(predicate).ToListAsync();
+            return (isTracked) ? await _context.Set<TEntity>().AsTracking().Where(predicate).ToListAsync() :
+                await _context.Set<TEntity>().AsTracking().Where(predicate).ToListAsync();
         }
 
         public void Remove(TEntity objModel)

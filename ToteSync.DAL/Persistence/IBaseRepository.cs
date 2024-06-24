@@ -14,12 +14,12 @@ namespace ToteSync.DAL.Persistence
         void AddRange(IEnumerable<TEntity> objModel);
         TEntity? GetById(int id);
         Task<TEntity?> GetByIdAsync(int id);
-        TEntity? Get(Expression<Func<TEntity, bool>> predicate);
-        Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate);
-        IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate);
-        Task<IEnumerable<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate);
-        IEnumerable<TEntity> GetAll();
-        Task<IEnumerable<TEntity>> GetAllAsync();
+        TEntity? Get(Expression<Func<TEntity, bool>> predicate, bool isTracked = false);
+        Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, bool isTracked = false);
+        IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate, bool isTracked = false);
+        Task<IEnumerable<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate, bool isTracked = false);
+        IEnumerable<TEntity> GetAll(bool isTracked = false);
+        Task<IEnumerable<TEntity>> GetAllAsync(bool isTracked = false);
         int Count();
         Task<int> CountAsync();
         void Update(TEntity objModel);
