@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using ToteSync.Domain;
+using ToteSync.DAL.ModelConfigurations;
+using ToteSync.Domain.Models;
 
 namespace ToteSync.DAL;
 
@@ -31,6 +32,8 @@ public partial class ApplicationDBContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         //It setups all the Entity configurations that implements IEntityTypeConfiguration<TEntity> that belongs to this project Assembly.
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
